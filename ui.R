@@ -131,9 +131,6 @@ Variable Names and rest , carrying the Numeric Values for the Variables
                    br(),
                    br(),
                    
-                   
-                   
-                   
                    downloadButton('downloadData', h6('Download Results'))
                    
           ))
