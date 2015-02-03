@@ -1,0 +1,86 @@
+Following is the Link to a PPT ,made in Slidify ; pitching the Clustering App, with some 3D effects using reveal.js Java FW .
+The PPT Embeds the link to the app hosted in Shinyserver.
+
+http://rpubs.com/mayankte/55551
+
+
+
+########## Slidify Code ###########################
+---
+#logo        : logo.png
+title       : Clustering Application
+subtitle    : based on K-Means Algo
+author      : Mayank T.
+job         : Enthusiast
+framework   : revealjs   
+highlighter : highlight.js
+hitheme     : zenburn
+widgets     : []
+mode        : standalone
+knit        : slidify::knit2slides
+---
+
+# CLUSTERING APP
+### Using K-Means Algorithm
+ *-- By Mayank T. (R Enthusiast)*
+
+---
+
+## Statistical Clustering App
+
+* Dynamic *(aka Reactive)* Application for Statistical Clustering 
+  + Clustering based on K-Means Algorithm 
+  + Reactive Data Summarization with 5 - Point statistical summary
+  + Reactive Data structure specification for quick Syntactic know-how 
+
+
+
+* Download the Cluster Results for deeper Insights 
+
+---
+
+## User Interface
+
+* Quick Data Load in popular .CSV Format
+* Designed to Auto-Read Variable tags
+* Reactive Input handling for Dynamic Output Response
+* [Hosted]( http://mayankte.shinyapps.io/clustering_app) Online,for Ready-Use with Zero SetUp Time
+
+
+---
+
+## Output Details
+
+* Data Structure & Summary; *Example*
+
+```{r,x1,echo=FALSE}
+var1 <- c(1.1,2.2,3.3)
+var2 <- c(3.1,8.2,5.3)
+var3 <- c(2.1,1.2,9.3)
+data <- data.frame(var1,var2,var3)
+str(data)
+```
+
+
+* Data Means; *Example*
+
+```{r,x2,echo=FALSE}
+mean(data$var1)
+```
+
+
+
+* Clustering Outputs; *Explore More Yourself*
+  + Cluster Size
+  + Cluster Centres
+  + Clustering Visualization
+
+
+---
+############################################################################
+
+## Tool Interface
+
+![wats up](capture_2.png)
+
+
