@@ -16,15 +16,12 @@ shinyServer(
     })
     
     
-    #     inop <- reactive({if (is.null(input$n)) 
+    ##  Future utility Block   
+    # inop <- reactive({if (is.null(input$n)) 
     #       ({as.numeric(3)})
     #       else
     #         ({as.numeric(input$n)})
-    #       
     #     })
-    
-    
-    
     
     
     observe({inputdf <- input$file
@@ -35,8 +32,7 @@ shinyServer(
              datapath <<- inputdf$datapath
     })
     
-    
-    #  nout <- reactive(quote({ifelse(is.null(input$n),3,input$n)}),quoted=TRUE)
+    ##  nout <- reactive(quote({ifelse(is.null(input$n),3,input$n)}),quoted=TRUE)
     
     observe({
       if (is.null(indata())) 
@@ -51,8 +47,6 @@ shinyServer(
       }})
     
     
-    
-    
     output$op1 <- renderPrint({
       if (is.null(indata())) 
         return (NULL)
@@ -61,15 +55,13 @@ shinyServer(
     })
     
     
-    #       
+    ## File DataPath Utility       
     #       output$op2 <- renderPrint({
     #         if (is.null(indata())) 
     #           return (NULL)
     #         else
     #           datapath
     #       })
-    
-    
     
     output$op3 <- renderPrint({
       if (is.null(indata())) 
@@ -88,15 +80,12 @@ shinyServer(
     })
     
     
-    
-    
     output$op4 <- renderPrint({
       if (is.null(indata())) 
         return (NULL)
       else
         str(indata())
     })
-    
     
     
     output$opl1 <- renderPlot({
@@ -133,7 +122,6 @@ shinyServer(
       else
         paste(size, collapse=' ')
     })
-    
     
     
     output$op7 <- renderPrint({
