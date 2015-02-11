@@ -1,0 +1,119 @@
+### Version 1.1 ###
+library(shiny)
+require(reshape, quietly=TRUE)
+require(fpc, quietly=TRUE)
+l <- 
+  shinyServer(
+    function(input, output) 
+    {
+      
+      output$op1 <- renderPrint({
+        inputdf <- input$file
+        inputdf$name
+      })
+      
+      
+      
+      output$op2 <- renderPrint({
+        inputdf <- input$file
+        inputdf$datapath
+      })
+      
+      
+      output$ot1 <- renderTable({
+        inputdf <- input$file
+        
+        # Check if dataset is empty, if not load the data
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        head(data,n=input$obs)
+        
+      })
+      
+      
+      output$op3 <- renderPrint({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        summary(data)
+      })
+      
+      
+      output$op4 <- renderPrint({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        str(data)
+      })
+      
+      
+      
+      output$opl1 <- renderPlot({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        
+        set.seed(123)
+        kmean <- ({kmeans(sapply(na.omit(data), rescaler, "range"), input$n)})
+        down <<- cbind(data,kmean$cluster)
+        plotcluster(na.omit(data), kmean$cluster)
+        title(main="Clustering Visualization",
+              sub=paste(format(Sys.time(), "%Y-%b-%d %H:%M:%S"), Sys.info()["user"]))
+        
+      }
+      )
+      
+      
+      
+      output$op5 <- renderPrint({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        colMeans(sapply(na.omit(data), rescaler, "range"))
+      })
+      
+      
+      
+      output$op6 <- renderPrint({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        set.seed(123)
+        kmean <- ({kmeans(sapply(na.omit(data), rescaler, "range"), input$n)})
+        paste(kmean$size, collapse=' ')
+      })
+      
+      
+      
+      output$op7 <- renderPrint({
+        inputdf <- input$file
+        if (is.null(inputdf)) 
+          return(NULL)
+        else
+          data <- read.csv(inputdf$datapath, header = TRUE)
+        set.seed(123)
+        kmean <- ({kmeans(sapply(na.omit(data), rescaler, "range"), input$n)})
+        kmean$centers
+      })
+      
+      
+      output$downloadData <- downloadHandler(
+        filename = function() {paste(input$file, '_results.csv', sep='')},
+        content = function(file) { write.csv(down, file) }
+      )
+      
+      
+    }
+  )
