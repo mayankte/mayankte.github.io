@@ -1,0 +1,117 @@
+### Version 1.1 ###
+library(shiny)
+shinyUI(
+  
+  fluidPage(  
+    
+    titlePanel( 
+      #h1("HP PWAx | Cluster Analysis Tool ")
+      img(src="hp_title_logo_3.png")             
+    ),
+    
+    sidebarLayout(
+      sidebarPanel(
+        
+        
+        
+        fileInput(inputId="file", 
+                  label = h5("Load DataSet:"),
+                  multiple = FALSE,
+                  accept=c(".csv",".xlsx",".xls")
+        ),
+        
+        numericInput(inputId="obs", 
+                     label = h5("No. of Observations to view:"),
+                     3 , min = 1 , max = 1000 , step = 1)
+        
+        #         checkboxInput(inputId="chkb", label = h6("Observe Variable Plots"), value = FALSE),
+        #         
+        #         conditionalPanel(condition = "input.chkb == true ",
+        #                          sliderInput(inputId = "bw_adjust",
+        #                                      label = "Bandwidth Adjustment",
+        #                                      min = 0.2,
+        #                                      max = 2,
+        #                                      value = 1,
+        #                                      step = 0.2))
+        #         
+        
+      ),
+      
+      
+      
+      mainPanel(
+        
+        tabsetPanel(
+          tabPanel("Data Summary",
+                   h6("File Name"),
+                   verbatimTextOutput('op1'),   
+                   br(),
+                   
+                   #                    h6("File Datapath"),
+                   #                    verbatimTextOutput('op2'),   
+                   #                    br(),
+                   
+                   h6("Summary"),
+                   verbatimTextOutput('op3'),
+                   br(),
+                   
+                   h6("Data Snippet"),
+                   tableOutput('ot1')
+          ),
+          
+          tabPanel("Dataframe Structure",
+                   h6("Structure"),
+                   verbatimTextOutput('op4')
+          ),
+          
+          tabPanel("Cluster Analysis",
+                   selectInput("n",
+                               label = h6("Enter the No. of Clusters :"), 
+                               choices = list("2"= 2,
+                                              "3" = 3, 
+                                              "4" = 4, 
+                                              "5" = 5,
+                                              "6" = 6,
+                                              "7"=7,
+                                              "8"=8,
+                                              "9"=9,
+                                              "10"=10,
+                                              "11"=11,
+                                              "12"=12
+                               ), 
+                               selected = 3),
+                   
+                   br(),
+                   
+                   
+                   
+                   h6("Cluster Plot"),
+                   plotOutput('opl1'),
+                   br(),
+                   
+                   h6("Mean Values"),
+                   verbatimTextOutput('op5'),
+                   br(),
+                   
+                   h6("Cluster Size"),
+                   verbatimTextOutput('op6'),
+                   br(),
+                   
+                   h6("Cluster Centres"),
+                   verbatimTextOutput('op7'),
+                   br(),
+                   br(),
+                   
+                   
+                   
+                   
+                   downloadButton('downloadData', h6('Download Results'))
+                   
+          )
+          
+        )
+        
+      )
+      
+    )))
+
