@@ -1,7 +1,10 @@
 ## Matrix Inverse is a Computationally Expensive Operation. 
-##Following Pair of functions , cache the inverse of a matrix and retrieve it from the cache if the same matrix inverse is 
-##retrieved by user. 
+## Following Pair of functions , cache the inverse of a matrix and retrieve it from the cache if the same matrix inverse is 
+## retrieved by user. 
 ## For a new unseen matrix, the inverse is newly calculated and pushed into the aformentioned cache
+
+## Note: This Code is an enhancement to Prof. Roger Peng's Code (Johns Hopkins University) and is based on his framework of
+cache implementation
 
 
 ## Part 1: makeCacheMatrix: This function creates a special "matrix" object that can cache its inverse.
