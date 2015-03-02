@@ -4,7 +4,7 @@
 ## For a new unseen matrix, the inverse is newly calculated and pushed into the aformentioned cache
 
 ## Note: This Code is an enhancement to Prof. Roger Peng's Code (Johns Hopkins University) and is based on his framework of
-cache implementation
+## cache implementation
 
 
 ## Part 1: makeCacheMatrix: This function creates a special "matrix" object that can cache its inverse.
