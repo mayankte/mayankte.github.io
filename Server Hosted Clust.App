@@ -3,3 +3,7 @@ hosted in shinyserver .
 
 https://mayankte.shinyapps.io/clustering_app/
 Try your hands (Till they pull it out), and send across the bug report
+
+Admin Logging for deployment and tweaking:
+https://www.shinyapps.io/admin/#/signup?referral=coursera
+www.shinyapps.io/coursera
